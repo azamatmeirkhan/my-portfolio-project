@@ -1,8 +1,5 @@
-import React, { type FC } from 'react'
+import React, { type FC } from "react";
 
 export const Header: FC = () => {
-  return (
-        <header>
-        </header>
-  )
-}
+  return <header></header>;
+};
