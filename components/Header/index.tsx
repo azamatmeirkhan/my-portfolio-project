@@ -1,5 +1,8 @@
 import React, { FC, useRef, useCallback } from "react";
 import styled from "styled-components";
+import { Icon } from "@/components/Icon";
+import { NavBarIcon, CloseIcon } from "@/icons";
+import Link from "next/link";
 
 export const Header: FC = () => {
   const navRef = useRef<any>();
@@ -13,16 +16,16 @@ export const Header: FC = () => {
       <header>
         <h3>Logo</h3>
         <nav ref={navRef}>
-          <a href="#">Home</a>
-          <a href="#">About</a>
-          <a href="#">My works</a>
-          <a href="#">Contacts</a>
+          <Link href="#home">Home</Link>
+          <Link href="#about">About</Link>
+          <Link href="#my-works">My works</Link>
+          <Link href="#contacts">Contacts</Link>
           <button className="nav-btn nav-close-btn" onClick={showNavbar}>
-            Exit
+            <Icon icon={CloseIcon} size={0.5} />
           </button>
         </nav>
         <button className="nav-btn" onClick={showNavbar}>
-          Bar
+          <Icon icon={NavBarIcon} size={0.5} />
         </button>
       </header>
     </StyledContainer>
@@ -33,7 +36,6 @@ const StyledContainer = styled.div`
   header {
     display: flex;
     align-items: center;
-
     justify-content: space-between;
     height: 80px;
     padding: 0 2rem;
