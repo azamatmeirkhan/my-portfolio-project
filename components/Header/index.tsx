@@ -1,8 +1,9 @@
 import React, { FC, useRef, useCallback } from "react";
 import styled from "styled-components";
-import { Icon } from "@/components/Icon";
-import { NavBarIcon, CloseIcon } from "@/icons";
 import Link from "next/link";
+import LinkedinIcon from "@/public/assets/img/linkedin.svg";
+import FacebookIcon from "@/public/assets/img/facebook.svg";
+import InstagramIcon from "@/public/assets/img/instagram.svg";
 
 export const Header: FC = () => {
   const navRef = useRef<any>();
@@ -20,12 +21,23 @@ export const Header: FC = () => {
           <Link href="#about">About</Link>
           <Link href="#my-works">My works</Link>
           <Link href="#contacts">Contacts</Link>
+          <div className="social-icon">
+            <Link href="#">
+              <LinkedinIcon />
+            </Link>
+            <Link href="#">
+              <FacebookIcon />
+            </Link>
+            <Link href="#">
+              <InstagramIcon />
+            </Link>
+          </div>
           <button className="nav-btn nav-close-btn" onClick={showNavbar}>
-            <Icon icon={CloseIcon} size={0.5} />
+            Exit
           </button>
         </nav>
         <button className="nav-btn" onClick={showNavbar}>
-          <Icon icon={NavBarIcon} size={0.5} />
+          Open
         </button>
       </header>
     </StyledContainer>
@@ -99,5 +111,48 @@ const StyledContainer = styled.div`
     nav a {
       font-size: 1.5rem;
     }
+  }
+
+  .social-icon {
+    display: inline-block;
+  }
+
+  .social-icon a {
+    width: 42px;
+    height: 42px;
+    background: rgba(217, 217, 217, 0.1);
+    display: inline-flex;
+    border-radius: 50%;
+    margin-right: 6px;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .social-icon a::before {
+    content: "";
+    width: 42px;
+    height: 42px;
+    position: absolute;
+    background-color: #ffffff;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 0.3s ease-in-out;
+  }
+
+  .social-icon a:hover::before {
+    transform: scale(1);
+  }
+
+  .social-icon a svg {
+    width: 40%;
+    z-index: 1;
+    transition: 0.3s ease-in-out;
+  }
+
+  .social-icon a:hover svg {
+    filter: brightness(0) saturate(100%) invert(0%) sepia(7%) saturate(98%)
+      hue-rotate(346deg) brightness(95%) contrast(86%);
   }
 `;
